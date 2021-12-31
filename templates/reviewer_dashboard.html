@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>CMS</title>
+    <link rel="shortcut icon" href="images/cmslogo-removebg.png">
+<style>
+header{
+        background-image: linear-gradient(to right,#007CC7,#12232E);
+        width: 100%;
+        height: 150px;
+        position: fixed;
+        z-index: 1;
+    }
+img{
+    width: 150px;
+    height: 150px;
+    
+}
+.nav{
+  float: right;
+  text-decoration: none;
+  border-radius: 0;
+}
+.profile{
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+</style>
+</head>
+<body>
+<header>
+<img src="{% static 'images/cmslogo-removebg.png' %}" class="logo" alt="">
+<a href="" ><img src="{% static 'images/profile.png' %}" alt="" class="profile"></a><br>
+<a href="" class="nav"><button class="btn btn-danger">Log-out</button></a>
+<a href="" class="nav"><button class="btn btn-primary">Profile</button></a>
+
+</header><br><br><br><br><br><br><br><br><br>
+<h3>Total papers : 1</h3><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Full name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Email</th>
+        <th scope="col">Topic</th>
+        <th scope="col">File</th>
+        
+        <th scope="col">-</th>
+        <th scope="col">-</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for paper in papers %}
+      <tr>
+        
+        <th scope="row">{{paper.id}}</th>
+        <td>{{paper.Name}}</td>
+        <td>{{paper.Department}}</td>
+        <td>{{Paper.emaiid}}</td>
+        <td>{{paper.Topic}}</td>
+        <td>{{paper.URL}} </td>
+        
+        <td><a href="/sentorganiser/{{paper.id}}" ><button class="btn btn-success"><i class="fas fa-vote-yea"></i> Accept</button></a></td>
+        <td><a href=""><button class="btn btn-danger"><i class="fas fa-trash"></i> Reject</button></a></td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

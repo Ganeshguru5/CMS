@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>CMS</title>
+<style>
+header{
+        background-image: linear-gradient(to right,#007CC7,#12232E);
+        width: 100%;
+        height: 150px;
+        position: fixed;
+        z-index: 1;
+    }
+img{
+    width: 150px;
+    height: 150px;
+    
+}
+h3{
+    padding-top: 200px;
+}
+.logotitle{
+    float: left;
+    
+}
+.col-sm-15{
+    padding-right: 90px;
+    padding-left: 90px;
+}
+.container {
+    margin: 0;
+    padding-left: 380px;
+    
+}
+.profile{
+    float: right;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.nav{
+    float: right;
+    text-decoration: none;
+    border-radius: 0;
+}
+
+</style>
+</head>
+<body>
+<div class="bg-image"></div>
+<header>
+
+<img src="{% static 'images/cmslogo-removebg.png' %}" class="logo" alt="">
+<a href="" ><img src="{% static 'images/profile.png' %}" alt="" class="profile"></a><br>
+<a href="" class="nav"><button class="btn btn-danger">Log-out</button></a>
+<a href="" class="nav"><button class="btn btn-primary">Profile</button></a>
+
+
+</header>
+
+<div class="container">
+  
+<h3>Send paper to candidate</h3>
+
+
+<div class="card text-white bg-dark mb-3" style="max-width: 50rem;">
+    <div class="card-header">Paper details</div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <form action="/sentsuccessfully" method="POST" autocomplete="off" loading='la'>
+      {% csrf_token %}
+      <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Name</label>
+            <input type="text" class="form-control" value="{{paper.Name}}" name="Name"  placeholder="Your Name">
+        </div>
+    </div><br>
+    <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Topic name</label>
+            <input type="text" class="form-control"  value="{{paper.Topic}}" name="Topic" placeholder="Topic">
+        </div>
+    </div><br>
+    <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">File URL</label>
+            <input type="text" class="form-control" value="{{paper.Url}}" name="Url" placeholder="Google drive url">
+        </div>
+    </div><br>
+    <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Department</label>
+            <input type="text" class="form-control" value="{{paper.Department}}" name="Department"  placeholder="Department">
+        </div>
+    </div><br>
+    <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <input type="email" class="form-control"  value="{{paper.emaiid}}" name="emailid"  placeholder="Email">
+        </div>
+    </div><br>
+    <div class="form-group row">
+            
+        <div class="col-sm-15">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <select name="reviewer" id="" class="form-control"  required>
+                <option value="">Select the reviewer</option>
+                <option value="Ganeshguru">Ganeshguru</option>
+                <option value="Benjamin">Benjamin</option>
+                <option value="Jhon">Jhon</option>
+            </select>
+        </div>
+    </div><br>
+    <center>
+    <button class="btn btn-success" style="width: 200px;"><i class="fas fa-hand-holding"></i> Submit</button>
+    </center>
+</form>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+</html>
